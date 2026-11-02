@@ -1,8 +1,10 @@
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <h1 className="text-4xl font-bold text-blue-600 text-center mt-10">
-      FutureNest
-    </h1>
+    <div>
+      <Navbar />
+    </div>
   );
 }
 
