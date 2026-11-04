@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Home() {
   return (
     <main className="max-w-2xl mx-auto p-6 text-center">
@@ -7,17 +9,26 @@ function Home() {
       </p>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <button className="border border-gray-300 rounded-xl p-6 font-medium hover:border-blue-600 hover:text-blue-600">
+        <Link
+          to="/quiz/10"
+          className="border border-gray-300 rounded-xl p-6 font-medium hover:border-blue-600 hover:text-blue-600"
+        >
           After 10th
-        </button>
+        </Link>
 
-        <button className="border border-gray-300 rounded-xl p-6 font-medium hover:border-blue-600 hover:text-blue-600">
+        <Link
+          to="/quiz/12"
+          className="border border-gray-300 rounded-xl p-6 font-medium hover:border-blue-600 hover:text-blue-600"
+        >
           After 10+2
-        </button>
+        </Link>
 
-        <button className="border border-gray-300 rounded-xl p-6 font-medium hover:border-blue-600 hover:text-blue-600">
+        <Link
+          to="/quiz/graduation"
+          className="border border-gray-300 rounded-xl p-6 font-medium hover:border-blue-600 hover:text-blue-600"
+        >
           After Graduation
-        </button>
+        </Link>
       </div>
     </main>
   );
