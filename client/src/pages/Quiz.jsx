@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import questions from "../data/questions";
+import careers from "../data/carrers";
 
 // Friendly names for each tag, shown to the student
 const interestNames = {
@@ -41,6 +42,9 @@ function Quiz() {
       }
     }
 
+    // Keep only the careers that match the top interest
+    const matchedCareers = careers.filter((career) => career.tag === topTag);
+
     return (
       <main className="max-w-2xl mx-auto p-6 text-center">
         <h1 className="text-3xl font-bold mt-10">Quiz finished!</h1>
@@ -58,6 +62,25 @@ function Quiz() {
             >
               <span>{interestNames[tag]}</span>
               <span className="font-medium">{counts[tag]}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Show the matching careers */}
+
+        <h2 className="text-2xl font-bold mt-10 mb-4">Careers for you</h2>
+        <div className="grid gap-4 text-left">
+          {matchedCareers.map((career) => (
+            <div
+              key={career.id}
+              className="border border-gray-300 rounded-xl p-5"
+            >
+              <h3 className="text-lg font-bold text-blue-600">{career.name}</h3>
+              <p className="text-gray-700 mt-1">{career.description}</p>
+              <p className="text-sm text-gray-500 mt-3">
+                <span className="font-medium">How to start: </span>
+                {career.path}
+              </p>
             </div>
           ))}
         </div>
