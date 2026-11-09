@@ -17,7 +17,7 @@ function Quiz() {
   // If all questions are done, show a finished message
   // We send the chosen answers to it as props
   if (current >= questions.length) {
-    return <Result answers={answers} />;
+    return <Result answers={answers} classId={classId} />;
   }
 
   // Pick the current question from the list
