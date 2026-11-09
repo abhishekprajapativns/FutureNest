@@ -8,7 +8,7 @@ const interestNames = {
   business: "Business and Finance",
 };
 
-function Result({ answers }) {
+function Result({ answers, classId }) {
   const counts = { tech: 0, creative: 0, people: 0, business: 0 };
 
   answers.forEach((tag) => {
@@ -23,7 +23,9 @@ function Result({ answers }) {
   }
 
   // Keep only the careers that match the top interest
-  const matchedCareers = careers.filter((career) => career.tag === topTag);
+  const matchedCareers = careers.filter(
+    (career) => career.tag === topTag && career.classes.includes(classId),
+  );
 
   return (
     <main className="max-w-2xl mx-auto p-6 text-center">
