@@ -4,6 +4,7 @@ const cors = require("cors");
 
 // dotenv reads secret values from the .env file
 require("dotenv").config();
+const mongoose = require("mongoose");
 
 // Create the app
 const app = express();
@@ -12,6 +13,12 @@ const app = express();
 app.use(cors());
 // This lets the server read JSON data sent to it
 app.use(express.json());
+
+// Connect to MongoDB Atlas
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log("MongoDB error:", err.message));
 
 // A test route: when someone opens "/", send this message
 app.get("/", (req, res) => {
