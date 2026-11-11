@@ -20,6 +20,10 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log("MongoDB error:", err.message));
 
+// Use the careers routes
+const careerRoutes = require("./routes/careerRoutes");
+app.use("/api/careers", careerRoutes);
+
 // A test route: when someone opens "/", send this message
 app.get("/", (req, res) => {
   res.send("FutureNest API is running");
