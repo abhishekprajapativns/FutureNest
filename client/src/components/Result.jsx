@@ -1,4 +1,4 @@
-import careers from "../data/careers";
+import { useState, useEffect } from "react";
 
 // Friendly names for each tag, shown to the student
 const interestNames = {
@@ -9,6 +9,17 @@ const interestNames = {
 };
 
 function Result({ answers, classId }) {
+  // This list will hold careers that come from the database
+  const [careers, setCareers] = useState([]);
+
+  //Run once when the page opens: ask the server for careers
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/careers")
+      .then((res) => res.json())
+      .then((data) => setCareers(data));
+  }, []);
+
   const counts = { tech: 0, creative: 0, people: 0, business: 0 };
 
   answers.forEach((tag) => {
@@ -53,7 +64,7 @@ function Result({ answers, classId }) {
       <div className="grid gap-4 text-left">
         {matchedCareers.map((career) => (
           <div
-            key={career.id}
+            key={career._id}
             className="border border-gray-300 rounded-xl p-5"
           >
             <h3 className="text-lg font-bold text-blue-600">{career.name}</h3>
