@@ -12,12 +12,26 @@ function Result({ answers, classId }) {
   // This list will hold careers that come from the database
   const [careers, setCareers] = useState([]);
 
+  // true while we wait for the server
+  const [loading, setLoading] = useState(true);
+
+  // will hold a message if something goes wrong
+  const [error, setError] = useState("");
+
   //Run once when the page opens: ask the server for careers
 
   useEffect(() => {
     fetch("http://localhost:5000/api/careers")
       .then((res) => res.json())
-      .then((data) => setCareers(data));
+      .then((data) => {
+        setCareers(data);
+        setLoading(false); //data came, stop loading
+      })
+
+      .catch(() => {
+        setError("Could not load careers. Please try again later.");
+        setLoading(false);
+      });
   }, []);
 
   const counts = { tech: 0, creative: 0, people: 0, business: 0 };
@@ -61,6 +75,15 @@ function Result({ answers, classId }) {
 
       {/* Show the matching careers */}
       <h2 className="text-2xl font-bold mt-10 mb-4">Careers for you</h2>
+
+      {loading && <p className="text-gray-500">Loading careers...</p>}
+
+      {error && <p className="text-red-500">{error}</p>}
+
+      {!loading && !error && matchedCareers.length === 0 && (
+        <p className="text-gray-500">No careers found for this class yet.</p>
+      )}
+
       <div className="grid gap-4 text-left">
         {matchedCareers.map((career) => (
           <div
