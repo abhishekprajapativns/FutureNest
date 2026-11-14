@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Friendly names for each tag, shown to the student
 const interestNames = {
@@ -86,9 +87,10 @@ function Result({ answers, classId }) {
 
       <div className="grid gap-4 text-left">
         {matchedCareers.map((career) => (
-          <div
+          <Link
+            to={`/career/${career.id}`}
             key={career._id}
-            className="border border-gray-300 rounded-xl p-5"
+            className="border border-gray-300 rounded-xl p-5 hover:border-blue-600"
           >
             <h3 className="text-lg font-bold text-blue-600">{career.name}</h3>
             <p className="text-gray-700 mt-1">{career.description}</p>
@@ -96,7 +98,7 @@ function Result({ answers, classId }) {
               <span className="font-medium">How to start: </span>
               {career.path}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </main>
