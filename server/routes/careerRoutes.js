@@ -10,4 +10,15 @@ router.get("/", async (req, res) => {
   res.json(careers);
 });
 
+// When someone opens /api/careers/7, send only the career with id 7
+router.get("/:id", async (req, res) => {
+  const career = await Career.findOne({ id: Number(req.params.id) });
+
+  // If no career has this id, tell the client
+  if (!career) {
+    return res.status(404).json({ message: "Career not found" });
+  }
+  res.json(career);
+});
+
 module.exports = router;
