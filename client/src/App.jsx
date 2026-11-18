@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import CareerDetail from "./pages/CareerDetail";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
 
         <Route path="/career/:careerId" element={<CareerDetail />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
