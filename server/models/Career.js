@@ -8,6 +8,9 @@ const careerSchema = new mongoose.Schema({
   classes: [String],
   description: String,
   path: String,
+  eligibility: String,
+  exams: String,
+  salary: String,
 });
 
 module.exports = mongoose.model("Career", careerSchema);
