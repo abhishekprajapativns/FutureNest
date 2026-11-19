@@ -55,27 +55,31 @@ function Result({ answers, classId }) {
 
   return (
     <main className="max-w-2xl mx-auto p-6 text-center">
-      <h1 className="text-3xl font-bold mt-10">Quiz finished!</h1>
-      <p className="text-gray-600 mt-3">Your strongest interest is</p>
-      <p className="text-2xl font-bold text-blue-600 mt-1">
+      <h1 className="font-heading text-3xl font-bold text-slate-900">
+        Quiz finished!
+      </h1>
+      <p className="mt-3 text-gray-600">Your strongest interest is</p>
+      <p className="font-heading mt-1 text-3xl font-bold text-teal-700">
         {interestNames[topTag]}
       </p>
 
       {/* Show the score of every interest */}
-      <div className="mt-8 text-left grid gap-2">
+      <div className="mt-8 grid gap-2 text-left">
         {Object.keys(counts).map((tag) => (
           <div
             key={tag}
-            className="flex justify-between border border-gray-200 rounded-lg p-3"
+            className="flex justify-between rounded-xl border border-orange-100 bg-white p-3"
           >
             <span>{interestNames[tag]}</span>
-            <span className="font-medium">{counts[tag]}</span>
+            <span className="font-bold">{counts[tag]}</span>
           </div>
         ))}
       </div>
 
       {/* Show the matching careers */}
-      <h2 className="text-2xl font-bold mt-10 mb-4">Careers for you</h2>
+      <h2 className="font-heading mt-10 mb-4 text-2xl font-bold text-slate-900">
+        Careers for you
+      </h2>
 
       {loading && <p className="text-gray-500">Loading careers...</p>}
 
@@ -90,17 +94,25 @@ function Result({ answers, classId }) {
           <Link
             to={`/career/${career.id}`}
             key={career._id}
-            className="border border-gray-300 rounded-xl p-5 hover:border-blue-600"
+            className="rounded-2xl border border-orange-100 bg-white p-5 hover:border-teal-700"
           >
-            <h3 className="text-lg font-bold text-blue-600">{career.name}</h3>
-            <p className="text-gray-700 mt-1">{career.description}</p>
-            <p className="text-sm text-gray-500 mt-3">
+            <h3 className="text-lg font-bold text-teal-700">{career.name}</h3>
+            <p className="mt-1 text-gray-700">{career.description}</p>
+            <p className="mt-3 text-sm text-gray-500">
               <span className="font-medium">How to start: </span>
               {career.path}
             </p>
           </Link>
         ))}
       </div>
+
+      {/* Go back and take the quiz again */}
+      <Link
+        to="/"
+        className="mt-8 inline-block rounded-xl bg-orange-700 px-6 py-3 font-bold text-white"
+      >
+        Take the quiz again
+      </Link>
     </main>
   );
 }
