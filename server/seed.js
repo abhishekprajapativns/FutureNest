@@ -13,6 +13,11 @@ const careers = [
     classes: ["10", "12", "graduation"],
     description: "Builds websites, apps and software for people to use.",
     path: "Learn programming, then do BCA, B.Tech or build projects and a portfolio.",
+    eligibility:
+      "Any stream after 12th is fine, Maths helps. BCA or B.Tech is common.",
+    exams: "JEE Main for B.Tech, or college entrance exams for BCA.",
+    salary:
+      "Varies by skill and company. Fresher pay is lower and grows with experience.",
   },
   {
     id: 2,
@@ -61,6 +66,9 @@ const careers = [
     classes: ["10", "12"],
     description: "Diagnoses illness and treats patients.",
     path: "Take Science with Biology in 11th-12th, then prepare for NEET for MBBS.",
+    eligibility: "12th pass with Physics, Chemistry and Biology.",
+    exams: "NEET-UG",
+    salary: "Varies a lot. Check current government and hospital pay scales.",
   },
   {
     id: 8,
@@ -85,6 +93,10 @@ const careers = [
     classes: ["10", "12", "graduation"],
     description: "Handles accounts, taxes and audits for people and companies.",
     path: "Take Commerce, then prepare for the CA exams through ICAI.",
+    eligibility: "12th pass. Commerce is helpful but not compulsory.",
+    exams: "CA Foundation, Intermediate and Final (conducted by ICAI).",
+    salary:
+      "Varies by firm and experience. Check ICAI and job portals for current ranges.",
   },
   {
     id: 11,
