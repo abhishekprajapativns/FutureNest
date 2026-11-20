@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { API_URL } from "../config";
 
 function CareerDetail() {
   // Get the career id from the link
@@ -11,7 +12,7 @@ function CareerDetail() {
 
   // Run when the page opens: ask the server for this one career
   useEffect(() => {
-    fetch(`http://localhost:5000/api/careers/${careerId}`)
+    fetch(`${API_URL}/api/careers/${careerId}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.message) {
