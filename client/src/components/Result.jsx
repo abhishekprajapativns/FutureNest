@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { API_URL } from "../config";
 
 // Friendly names for each tag, shown to the student
 const interestNames = {
@@ -22,7 +23,7 @@ function Result({ answers, classId }) {
   //Run once when the page opens: ask the server for careers
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/careers")
+    fetch(`${API_URL}/api/careers`)
       .then((res) => res.json())
       .then((data) => {
         setCareers(data);
