@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
     <nav className="flex items-center justify-between border-b border-orange-100 px-6 py-4 md:px-12">
@@ -15,14 +16,16 @@ function Navbar() {
           Home
         </Link>
 
+        <Link to="/login" className="text-teal-700">
+          Log in
+        </Link>
+
         <Link
           to="/signup"
           className="rounded-xl bg-teal-700 px-4 py-2 text-white hover:bg-teal-800"
         >
           Sign up
         </Link>
-
-        <span className="text-gray-500"></span>
       </div>
     </nav>
   );
