@@ -15,6 +15,13 @@ function Navbar() {
           Home
         </Link>
 
+        <Link
+          to="/signup"
+          className="rounded-xl bg-teal-700 px-4 py-2 text-white hover:bg-teal-800"
+        >
+          Sign up
+        </Link>
+
         <span className="text-gray-500"></span>
       </div>
     </nav>
