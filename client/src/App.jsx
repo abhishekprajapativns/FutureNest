@@ -5,6 +5,7 @@ import Quiz from "./pages/Quiz";
 import CareerDetail from "./pages/CareerDetail";
 import Footer from "./components/Footer";
 import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path="/career/:careerId" element={<CareerDetail />} />
 
         <Route path="/signup" element={<Signup />} />
+
+        <Route path="/login" element={<Login />} />
       </Routes>
 
       <Footer />
