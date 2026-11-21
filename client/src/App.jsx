@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import CareerDetail from "./pages/CareerDetail";
 import Footer from "./components/Footer";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path="/quiz/:classId" element={<Quiz />} />
 
         <Route path="/career/:careerId" element={<CareerDetail />} />
+
+        <Route path="/signup" element={<Signup />} />
       </Routes>
 
       <Footer />
