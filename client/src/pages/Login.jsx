@@ -15,7 +15,7 @@ function Login() {
   }
 
   return (
-    <main className="grid min-h-[85vh] md:grid-cols-2">
+    <main className="grid min-h-[70vh] md:grid-cols-2">
       {/* Left side: green panel (hidden on small phones) */}
       <div className="hidden bg-gradient-to-b from-teal-700 to-teal-800 p-16 text-white md:flex md:flex-col md:justify-center">
         <p className="font-heading text-3xl font-bold">FutureNest</p>
