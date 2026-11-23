@@ -24,6 +24,10 @@ mongoose
 const careerRoutes = require("./routes/careerRoutes");
 app.use("/api/careers", careerRoutes);
 
+// Use the auth routes (signup and login)
+const authRoutes = require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
 // A test route: when someone opens "/", send this message
 app.get("/", (req, res) => {
   res.send("FutureNest API is running");
