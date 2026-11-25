@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 function Signup() {
   // What the student types in each box
@@ -7,9 +8,39 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(e) {
+  // A message if something goes wrong, and a flag while we wait
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
     // Stop the page from reloading
     e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Send the form data to our server
+      const res = await fetch(`${API_URL}/api/auth/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        // The server said no (for example: email already used)
+        setError(data.message);
+      } else {
+        // Account created, go to the login page
+        navigate("/login");
+      }
+    } catch (err) {
+      setError("Could not reach the server. Please try again later.");
+    }
+
+    setLoading(false);
 
     // The backend is not ready yet, so we only print name and email
     console.log({ name, email });
