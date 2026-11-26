@@ -41,9 +41,6 @@ function Signup() {
     }
 
     setLoading(false);
-
-    // The backend is not ready yet, so we only print name and email
-    console.log({ name, email });
   }
 
   return (
@@ -55,7 +52,7 @@ function Signup() {
         <h1 className="font-heading mt-8 text-3xl font-bold leading-tight">
           Your career roadmap, saved in one place
         </h1>
-        <p className="mt-6 text-baseS text-teal-50">
+        <p className="mt-6 text-base text-teal-50">
           Create a free account to take the career test and save your results.
         </p>
       </div>
@@ -85,12 +82,12 @@ function Signup() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your name"
-                className="w-full rounded-xl border border-orange-200 bg-white px-4 py-3"
+                className="w-full rounded-xl border border-orange-200 bg-white px-4 py-2"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="mb-2 block text-sm font-medium">
+              <label htmlFor="email" className="mb-1 block text-sm font-medium">
                 Email
               </label>
               <input
@@ -100,14 +97,14 @@ function Signup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full rounded-2xl border-2 border-orange-100 bg-white px-5 py-4"
+                className="w-full rounded-xl border border-orange-200 bg-white px-4 py-2"
               />
             </div>
 
             <div>
               <label
                 htmlFor="password"
-                className="mb-2 block text-sm font-medium"
+                className="mb-1 block text-sm font-medium"
               >
                 Password
               </label>
@@ -119,22 +116,26 @@ function Signup() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="At least 8 characters"
-                className="w-full rounded-xl border-2 border-orange-100 bg-white px-5 py-4"
+                className="w-full rounded-xl border border-orange-200 bg-white px-4 py-2"
               />
             </div>
 
+            {/* Error message from the server */}
+            {error && <p className="text-sm text-red-600">{error}</p>}
+
             <button
               type="submit"
-              className="rounded-2xl bg-teal-700 py-4 text-lg font-bold text-white hover:bg-teal-800"
+              disabled={loading}
+              className="rounded-xl bg-teal-700 py-2 font-bold text-white hover:bg-teal-800 disabled:bg-gray-400"
             >
-              Sign up
+              {loading ? "Creating account..." : "Sign up"}
             </button>
 
             {/* Google login will be added later */}
             <button
               type="button"
               disabled
-              className="rounded-xl border border-orange-200 bg-white py-3 font-bold text-gray-400"
+              className="rounded-xl border border-orange-200 bg-white py-2 font-bold text-gray-400"
             >
               Continue with Google (coming soon)
             </button>
